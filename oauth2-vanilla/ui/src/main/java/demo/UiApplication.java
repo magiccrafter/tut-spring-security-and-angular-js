@@ -25,6 +25,7 @@ import org.springframework.web.util.WebUtils;
 @SpringBootApplication
 @EnableZuulProxy
 @EnableOAuth2Sso
+//@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 public class UiApplication extends WebSecurityConfigurerAdapter {
 
 	public static void main(String[] args) {
@@ -33,9 +34,13 @@ public class UiApplication extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		http.antMatcher("/**").authorizeRequests()
-				.antMatchers("/index.html", "/home.html", "/", "/webjars/**").permitAll().anyRequest()
-				.authenticated().and().csrf().csrfTokenRepository(csrfTokenRepository())
+		http
+                .httpBasic()
+                .and().authorizeRequests()
+                .antMatchers("/index.html", "/home.html", "/login.html", "/", "/webjars/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .csrf().csrfTokenRepository(csrfTokenRepository())
 				.and().addFilterAfter(csrfHeaderFilter(), CsrfFilter.class);
 	}
 

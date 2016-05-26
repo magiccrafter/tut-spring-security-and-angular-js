@@ -1,10 +1,8 @@
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
-    <script type="application/javascript" src="/webjars/jquery/jquery.min.js"></script>
-    <script type="application/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-    <script type="application/javascript" src="/webjars/angularjs/angular.min.js"></script>
-    <script type="application/javascript" src="/webjars/angularjs/angular-route.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../webjars/bootstrap/css/bootstrap.min.css"/>
+    <script type="application/javascript" src="../webjars/jquery/jquery.min.js"></script>
+    <script type="application/javascript" src="../webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 <#if RequestParameters['error']??>

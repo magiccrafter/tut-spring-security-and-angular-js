@@ -64,7 +64,7 @@ public class AuthserverApplication extends WebMvcConfigurerAdapter {
 			http
 				.formLogin().loginPage("/login").permitAll()
 			.and()
-				.requestMatchers().antMatchers("/login", "/oauth/authorize", "/oauth/confirm_access")
+				.requestMatchers().antMatchers("/login", "/oauth/authorize", "/oauth/confirm_access", "/webjars/**")
 			.and()
 				.authorizeRequests().anyRequest().authenticated();
 			// @formatter:on
@@ -99,8 +99,9 @@ public class AuthserverApplication extends WebMvcConfigurerAdapter {
 			clients.inMemory()
 					.withClient("acme")
 					.secret("acmesecret")
-					.authorizedGrantTypes("authorization_code", "refresh_token",
-							"password").scopes("openid");
+					.authorizedGrantTypes("authorization_code")
+                    .scopes("openid")
+                    .autoApprove(true);
 		}
 
 		@Override
